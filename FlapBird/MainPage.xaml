@@ -6,7 +6,7 @@
       
             <Grid>
 
-              <Image
+               <Image
                      x:Name="FundoImg"
                      Source="imagemfundo.png"
                      Opacity=".8"
@@ -14,7 +14,7 @@
                      VerticalOptions="FillAndExpand"
                      HorizontalOptions="FillAndExpand"/>
 
-              <Image
+               <Image
                     x:Name="imgpassaro"
                     Source="imagempassaro.png"
                     WidthRequest="60"
@@ -22,21 +22,34 @@
                     VerticalOptions="Center"
                     HorizontalOptions="Start"/>
 
-                         <Image
+               <Image
                      x:Name="CanoDeBaixo"
-                     Source="imagemcano.png"
-                     WidthRequest="300"
+                     Source="canodebaixo3.png"
+                     WidthRequest="80"
                      VerticalOptions="End"
                      HorizontalOptions="End"
                      />
 
-                        <Image
+               <Image
                      x:Name="CanoDeCima"
                      Source="imagemcano2.png"
                      WidthRequest="80"
                      VerticalOptions="Start"
                      HorizontalOptions="End"
                      />
+               
+               <Frame x:Name="frameGameOver"
+                      BackgroundColor="#99000000"
+                      HorizontalOptions="Fill"
+                      VerticalOptions="Fill">
+                      <Frame.GestureRecognizers>
+                      <TapGestureRecognizers Tapper="OnGameOverClicked"/>
+                      </FrameGestureRecognizers>
+                   
+                      </Frame>
+               
+               
+               
 
     
             </Grid>

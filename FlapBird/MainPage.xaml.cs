@@ -5,6 +5,11 @@ public partial class MainPage : ContentPage
    const int gravidade=30;
    const int tempoEntreFrames=25;
    bool estaMorto=false;
+   double larguraJanela=0;
+   double alturaJanela=0;
+   int velocidade=20;
+
+
 		public MainPage()
 	{
 		InitializeComponent();
@@ -20,15 +25,41 @@ public partial class MainPage : ContentPage
 		{
 			AplicaGravidade();
 			await Task.Delay(tempoEntreFrames);
+			GerenciaCanos();
 		}
 	 }
-    protected override void OnAppearing()
+   
+
+	protected override void OnSizeAllocated(double w, double h)
+	{
+		base.OnSizeAllocated(w, h);
+		larguraJanela=w;
+		alturaJanela=h;
+	}
+
+      void GerenciaCanos()
+	{
+		CanoDeCima.TranslationX-=velocidade;
+		CanoDeBaixo.TranslationX-=velocidade;
+		if(CanoDeBaixo.TranslationX<=-larguraJanela)
+	 {
+		CanoDeBaixo.TranslationX=0;
+		CanoDeCima.TranslationX=0;
+
+     }
+  
+	}
+	void OnGameOverClicked(object s, TappedEventArgs a)
     {
-        base.OnAppearing();
+		frameGameOver.IsVisible=false;
+		Inicializar();
 		Desenhar();
-    }
-
-
+	}
+	void Inicializar()
+	{
+		estaMorto=false;
+	    imgpassaro.TranslationY=0;
+	}
 
 }
 
