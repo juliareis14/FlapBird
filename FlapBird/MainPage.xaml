@@ -5,6 +5,9 @@
 
       
             <Grid>
+            <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnGridClicked"/>
+            </Grid.GestureRecognizers>
 
                <Image
                      x:Name="FundoImg"
@@ -18,9 +21,11 @@
                     x:Name="imgpassaro"
                     Source="imagempassaro.png"
                     WidthRequest="60"
+                    Margin="30,0,0,0"
                     HeightRequest="90"
                     VerticalOptions="Center"
-                    HorizontalOptions="Start"/>
+                    HorizontalOptions="Start"
+                   />
 
                <Image
                      x:Name="CanoDeBaixo"
@@ -28,6 +33,7 @@
                      WidthRequest="80"
                      VerticalOptions="End"
                      HorizontalOptions="End"
+                     
                      />
 
                <Image
@@ -36,12 +42,12 @@
                      WidthRequest="80"
                      VerticalOptions="Start"
                      HorizontalOptions="End"
+                     
                      />
                
                    <Frame x:Name="FrameGameOver"
                BackgroundColor="#99000000"
-               HorizontalOptions="Fill"
-               VerticalOptions="Fill">
+             >
                <Frame.GestureRecognizers>
                <TapGestureRecognizer Tapped="OnGameOverClicked"/>
                </Frame.GestureRecognizers>

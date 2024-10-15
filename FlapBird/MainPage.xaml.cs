@@ -8,11 +8,26 @@ public partial class MainPage : ContentPage
    double larguraJanela=0;
    double alturaJanela=0;
    int velocidade=20;
+   const int maxTempoPulando=3;
+   int tempoPulando=0;
+   bool estaPulando=false;
+   const int forcaPulo=60;
 
 
 		public MainPage()
 	{
 		InitializeComponent();
+	}
+	void AplicaPulo()
+	{
+      imgpassaro.TranslationY-=forcaPulo;
+	  tempoPulando++;
+	  if(tempoPulando>=maxTempoPulando)
+	  {
+		estaPulando=false;
+		tempoPulando=0;
+	  }
+
 	}
 	void AplicaGravidade()
 	{
@@ -22,7 +37,9 @@ public partial class MainPage : ContentPage
      async Task Desenhar()
 	 {
 		while (!estaMorto)
-		{
+       {   if (estaPulando)
+		        AplicaPulo();
+		else
 			AplicaGravidade();
 			await Task.Delay(tempoEntreFrames);
 			GerenciaCanos();
@@ -32,9 +49,9 @@ public partial class MainPage : ContentPage
 				FrameGameOver.IsVisible = true;
 				break;
 			}
-			await Task.Delay(tempoEntreFrames);
-		}
-		}
+	 		await Task.Delay(tempoEntreFrames);
+	    }
+	 }
 	 
    
 
@@ -84,7 +101,7 @@ public partial class MainPage : ContentPage
 	}
 	bool VerificaColisaoTeto()
 	{
-		var minY = alturaJanela / 2;
+		var minY = -alturaJanela / 2;
 		if (imgpassaro.TranslationY <= minY)
 			return true;
 		else
@@ -92,13 +109,18 @@ public partial class MainPage : ContentPage
 	}
 	bool VerificaColisaoChao()
 	{
-		var maxY = alturaJanela / 2 - FundoImg.HeightRequest;
+		var maxY = alturaJanela / 2 ;
 		if (imgpassaro.TranslationY >= maxY)
 			return true;
 		else
 			return false;
 
 	}
+
+		void OnGridClicked(object s, TappedEventArgs a)
+		{ 
+			estaPulando=true;
+		}
 
 }
 
