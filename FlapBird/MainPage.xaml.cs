@@ -26,8 +26,16 @@ public partial class MainPage : ContentPage
 			AplicaGravidade();
 			await Task.Delay(tempoEntreFrames);
 			GerenciaCanos();
+		if (VerificaColisao())
+			{
+				estaMorto = true;
+				FrameGameOver.IsVisible = true;
+				break;
+			}
+			await Task.Delay(tempoEntreFrames);
 		}
-	 }
+		}
+	 
    
 
 	protected override void OnSizeAllocated(double w, double h)
@@ -51,7 +59,7 @@ public partial class MainPage : ContentPage
 	}
 	void OnGameOverClicked(object s, TappedEventArgs a)
     {
-		frameGameOver.IsVisible=false;
+		FrameGameOver.IsVisible=false;
 		Inicializar();
 		Desenhar();
 	}
@@ -59,6 +67,37 @@ public partial class MainPage : ContentPage
 	{
 		estaMorto=false;
 	    imgpassaro.TranslationY=0;
+	}
+
+	bool VerificaColisao()
+	{
+		if (!estaMorto)
+		{
+			if (VerificaColisaoTeto() ||
+			VerificaColisaoChao())
+			{
+				return true;
+			}
+
+		}
+		return false;
+	}
+	bool VerificaColisaoTeto()
+	{
+		var minY = alturaJanela / 2;
+		if (imgpassaro.TranslationY <= minY)
+			return true;
+		else
+			return false;
+	}
+	bool VerificaColisaoChao()
+	{
+		var maxY = alturaJanela / 2 - FundoImg.HeightRequest;
+		if (imgpassaro.TranslationY >= maxY)
+			return true;
+		else
+			return false;
+
 	}
 
 }

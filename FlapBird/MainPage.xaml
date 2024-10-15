@@ -38,15 +38,18 @@
                      HorizontalOptions="End"
                      />
                
-               <Frame x:Name="frameGameOver"
-                      BackgroundColor="#99000000"
-                      HorizontalOptions="Fill"
-                      VerticalOptions="Fill">
-                      <Frame.GestureRecognizers>
-                      <TapGestureRecognizers Tapper="OnGameOverClicked"/>
-                      </FrameGestureRecognizers>
-                   
-                      </Frame>
+                   <Frame x:Name="FrameGameOver"
+               BackgroundColor="#99000000"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill">
+               <Frame.GestureRecognizers>
+               <TapGestureRecognizer Tapped="OnGameOverClicked"/>
+               </Frame.GestureRecognizers>
+            <Image Source="imagemplay.png"
+             HeightRequest="195"
+                   WidthRequest="160"
+            />
+            </Frame>              
                
                
                
