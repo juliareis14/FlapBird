@@ -3,64 +3,65 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlapBird.MainPage">
 
-      
-            <Grid>
+
+      <Grid>
             <Grid.GestureRecognizers>
-            <TapGestureRecognizer Tapped="OnGridClicked"/>
+                  <TapGestureRecognizer Tapped="OnGridClicked"/>
             </Grid.GestureRecognizers>
 
-               <Image
-                     x:Name="FundoImg"
-                     Source="imagemfundo.png"
-                     Opacity=".8"
-                     Aspect="Fill"
-                     VerticalOptions="FillAndExpand"
-                     HorizontalOptions="FillAndExpand"/>
+            <Label x:Name="labelScore"
+                   VerticalOptions="Start"
+                   HorizontalOptions="End"/>
 
-               <Image
-                    x:Name="imgpassaro"
-                    Source="imagempassaro.png"
-                    WidthRequest="60"
-                    Margin="30,0,0,0"
-                    HeightRequest="90"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Start"
-                   />
+            <Image
+                  x:Name="FundoImg"
+                  Source="imagemfundo.png"
+                  Opacity=".8"
+                  Aspect="Fill"
+                  VerticalOptions="FillAndExpand"
+                  HorizontalOptions="FillAndExpand"/>
 
-               <Image
-                     x:Name="CanoDeBaixo"
-                     Source="canodebaixo3.png"
-                     WidthRequest="80"
-                     VerticalOptions="End"
-                     HorizontalOptions="End"
-                     
-                     />
+            <Image
+                  x:Name="imgpassaro"
+                  Source="imagempassaro.png"
+                  WidthRequest="60"
+                  Margin="30,0,0,0"
+                  HeightRequest="90"
+                  VerticalOptions="Center"
+                  HorizontalOptions="Start"/>
 
-               <Image
-                     x:Name="CanoDeCima"
-                     Source="imagemcano2.png"
-                     WidthRequest="80"
-                     VerticalOptions="Start"
-                     HorizontalOptions="End"
-                     
-                     />
-               
-                   <Frame x:Name="FrameGameOver"
-               BackgroundColor="#99000000"
-             >
-               <Frame.GestureRecognizers>
-               <TapGestureRecognizer Tapped="OnGameOverClicked"/>
-               </Frame.GestureRecognizers>
-            <Image Source="imagemplay.png"
-             HeightRequest="195"
-                   WidthRequest="160"
-            />
-            </Frame>              
-               
-               
-               
+            <Image
+                  x:Name="CanoDeBaixo"
+                  Source="canodebaixo3.png"
+                  BackgroundColor="Red"
+                  WidthRequest="80"
+                  HeightRequest="650"
+                  VerticalOptions="End"
+                  HorizontalOptions="End"/>
 
-    
-            </Grid>
+            <Image
+                  x:Name="CanoDeCima"
+                  Source="imagemcano2.png"
+                  BackgroundColor="Red"
+                  WidthRequest="80"
+                  HeightRequest="650"
+                  VerticalOptions="Start"
+                  HorizontalOptions="End"/>
+
+            <Frame x:Name="FrameGameOver"
+                   BackgroundColor="#99000000">
+                  <Frame.GestureRecognizers>
+                  <TapGestureRecognizer Tapped="OnGameOverClicked"/>
+                  </Frame.GestureRecognizers>
+                  <Image Source="imagemplay.png"
+                         HeightRequest="195"
+                         WidthRequest="160"/>
+            </Frame>
+
+
+
+
+
+      </Grid>
 
 </ContentPage>
