@@ -28,11 +28,11 @@
                   Margin="30,0,0,0"
                   HeightRequest="90"
                   VerticalOptions="Center"
-                  HorizontalOptions="Start"/>
+                  HorizontalOptions="Center"/>
 
             <Image
                   x:Name="CanoDeBaixo"
-                  Source="canodebaixo3.png"
+                  Source="cano_baixo.png"
                   BackgroundColor="Red"
                   WidthRequest="80"
                   HeightRequest="650"
@@ -41,7 +41,7 @@
 
             <Image
                   x:Name="CanoDeCima"
-                  Source="imagemcano2.png"
+                  Source="cano_cima.png"
                   BackgroundColor="Red"
                   WidthRequest="80"
                   HeightRequest="650"
@@ -51,16 +51,38 @@
             <Frame x:Name="FrameGameOver"
                    BackgroundColor="#99000000">
                   <Frame.GestureRecognizers>
-                  <TapGestureRecognizer Tapped="OnGameOverClicked"/>
+                        <TapGestureRecognizer Tapped="OnGameOverClicked"/>
                   </Frame.GestureRecognizers>
-                  <Image Source="imagemplay.png"
-                         HeightRequest="195"
-                         WidthRequest="160"/>
+
+                  <Grid>
+                        <Grid.RowDefinitions>
+                              <RowDefinition Height="*"/>
+                              <RowDefinition Height="*"/>
+                              <RowDefinition Height="*"/>
+                              <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="imagemplay.png"
+                               HeightRequest="500"
+                               WidthRequest="250"
+                               Grid.Row="2"/>
+                        <Frame Grid.Row="1"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                              <Grid>
+                                    <Grid.ColumnDefinitions>
+                                          <ColumnDefinition Width="*"/>
+                                          <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                              </Grid>
+                              <Label Text="Você passou por 001 Canos!!"
+                                     x:Name="LabelCanos"
+                                     Grid.Column="1"
+                                     Grid.Row="4"/>
+                        </Frame>
+                  </Grid>
+
+
             </Frame>
-
-
-
-
 
       </Grid>
 
