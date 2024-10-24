@@ -2,7 +2,7 @@
 
 public partial class MainPage : ContentPage
 {
-	const int gravidade = 30;
+	const int gravidade = 10;
 	const int tempoEntreFrames = 25;
 	bool estaMorto = false;
 	double larguraJanela = 0;
@@ -11,9 +11,11 @@ public partial class MainPage : ContentPage
 	const int maxTempoPulando = 3;
 	int tempoPulando = 0;
 	bool estaPulando = false;
-	const int forcaPulo = 60;
+	const int forcaPulo = 25;
 	const int aberturaMinima = 200;
 	int score=0;
+	 const int tamanhoMinimoPassagem = 200;
+
 
 
 	public MainPage()
@@ -63,6 +65,11 @@ public partial class MainPage : ContentPage
 		base.OnSizeAllocated(w, h);
 		larguraJanela = w;
 		alturaJanela = h;
+		 if (h > 0)
+		  {
+      CanoDeCima.HeightRequest  = h ;
+      CanoDeBaixo.HeightRequest = h ;
+    }
 	}
 
 	void GerenciaCanos()
@@ -80,7 +87,8 @@ public partial class MainPage : ContentPage
 
 			score++;
 			labelScore.Text = "Canos:" + score.ToString("D3");
-
+			if (score % 4 == 0)
+					velocidade++;
 		}
 
 	}
@@ -117,6 +125,14 @@ public partial class MainPage : ContentPage
 				return false;
 	}
 	
+	  bool VerificaColisaoCano()
+	{
+		if (VerificaColisaoCanoBaixo() || VerificaColisaoCanoCima())
+		return true;
+		else
+		return false;
+	}
+
 	bool VerificaColisaoTeto()
 	{
 		var minY = -alturaJanela / 2;
@@ -163,16 +179,18 @@ public partial class MainPage : ContentPage
 	{
 		var posHimgpassaro = (larguraJanela / 2) - (imgpassaro.WidthRequest / 2);
 		var posVimgpassaro = (alturaJanela / 2) - (imgpassaro.HeightRequest / 2) + imgpassaro.TranslationY;
-		if (posHimgpassaro >= Math.Abs(CanoDeBaixo.TranslationX) - CanoDeBaixo.WidthRequest &&
-		 posHimgpassaro <= Math.Abs(CanoDeBaixo.TranslationX) + CanoDeBaixo.WidthRequest &&
-		 posVimgpassaro <= CanoDeBaixo.HeightRequest + CanoDeBaixo.TranslationY)
-		 {
-			return true;
-		 }
-		 else 
-		 {
+		var yMaxCano = CanoDeCima.HeightRequest + CanoDeCima.TranslationY + tamanhoMinimoPassagem;
+
+		if (
+			posHimgpassaro >= Math.Abs(CanoDeCima.TranslationX) - CanoDeCima.WidthRequest &&
+			posHimgpassaro <= Math.Abs(CanoDeCima.TranslationX) + CanoDeCima.WidthRequest &&			
+		 	posVimgpassaro   >= yMaxCano
+		   )
+		
+			return true;	
+		 else 	
 			return false;
-		 }
+		
 	}
 	
 }

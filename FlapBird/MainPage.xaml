@@ -11,7 +11,8 @@
 
             <Label x:Name="labelScore"
                    VerticalOptions="Start"
-                   HorizontalOptions="End"/>
+                   HorizontalOptions="End"
+                   FontSize="20"/>
 
             <Image
                   x:Name="FundoImg"
@@ -33,7 +34,7 @@
             <Image
                   x:Name="CanoDeBaixo"
                   Source="cano_baixo.png"
-                  BackgroundColor="Red"
+                
                   WidthRequest="80"
                   HeightRequest="650"
                   VerticalOptions="End"
@@ -42,7 +43,7 @@
             <Image
                   x:Name="CanoDeCima"
                   Source="cano_cima.png"
-                  BackgroundColor="Red"
+                
                   WidthRequest="80"
                   HeightRequest="650"
                   VerticalOptions="Start"
